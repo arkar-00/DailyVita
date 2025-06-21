@@ -95,8 +95,6 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
       style={commonStyles.safeAreaContainer}
       edges={['top', 'left', 'right']}
     >
-      <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
-
       <ScrollView
         style={commonStyles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -156,6 +154,7 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
             style={styles.dietsNextButton}
           />
         </View>
+        <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
       </View>
     </SafeAreaView>
   )
