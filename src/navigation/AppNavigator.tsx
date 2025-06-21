@@ -11,6 +11,7 @@ import {
   AllergiesScreen,
   DietsScreen,
   HealthConcernsScreen,
+  LifestyleScreen,
   WelcomeScreen,
 } from '../screens'
 
@@ -36,6 +37,10 @@ const AppNavigator: React.FC = () => {
         <Stack.Screen
           name={SCREEN_NAMES.ALLERGIES}
           component={AllergiesScreen}
+        />
+        <Stack.Screen
+          name={SCREEN_NAMES.LIFESTYLE}
+          component={LifestyleScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
