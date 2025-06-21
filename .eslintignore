@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Native
+android/
+ios/
+
+# Metro
+.metro-health-check*
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bundle artifacts
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/
+
+# Build
+build/
+
+# Logs
+logs
+*.log
+
+# Config files
+*.config.js
+babel.config.js
+metro.config.js
+
+# Generated files
+*.d.ts
+
+# Package files
+package-lock.json
+yarn.lock 
