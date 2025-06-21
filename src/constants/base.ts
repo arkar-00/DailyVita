@@ -2,6 +2,7 @@
 export const SCREEN_NAMES = {
   WELCOME: 'Welcome',
   HEALTH_CONCERNS: 'HealthConcerns',
+  DIETS: 'Diets',
 } as const
 
 // Storage keys
@@ -48,6 +49,8 @@ export const COLORS = {
   ACCENT_BLUE: '#E3F2FD',
   ACCENT_PURPLE: '#F3E5F5',
   ACCENT_ORANGE: '#FFF3E0',
+
+  SELECTED_COLOR: '#4A5D6A',
 } as const
 
 // Dimensions
@@ -56,7 +59,7 @@ export const DIMENSIONS = {
   BORDER_RADIUS_SMALL: 2,
   BORDER_RADIUS_MEDIUM: 10,
   BORDER_RADIUS_LARGE: 20,
-  BORDER_RADIUS_BUTTON: 25,
+  BORDER_RADIUS_BUTTON: 15,
 
   // Spacing
   SPACING_XS: 4,

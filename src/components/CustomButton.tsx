@@ -23,12 +23,10 @@ const getButtonStyle = (
     return {
       backgroundColor: COLORS.GRAY_MEDIUM,
       borderColor: COLORS.GRAY_MEDIUM,
-      borderWidth: variant === 'secondary' ? 1 : 0,
     }
   }
   return {
     backgroundColor: variant === 'primary' ? COLORS.PRIMARY : 'transparent',
-    borderWidth: variant === 'secondary' ? 1 : 0,
     borderColor: variant === 'secondary' ? COLORS.PRIMARY : 'transparent',
   }
 }
