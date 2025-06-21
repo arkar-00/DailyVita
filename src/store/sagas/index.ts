@@ -4,3 +4,4 @@ import { onboardingSaga } from './onboardingSaga'
 export function* rootSaga() {
   yield all([fork(onboardingSaga)])
 }
+

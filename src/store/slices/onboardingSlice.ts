@@ -1,6 +1,57 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { HealthConcern, Diet, Allergy, OnboardingState } from '../../types'
-import { AlcoholOption } from '../../constants'
+import {
+  HealthConcern,
+  Diet,
+  Allergy,
+  OnboardingState,
+  FormattedOnboardingData,
+} from '../../types'
+import { AlcoholOption, STORAGE_KEYS } from '../../constants'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+// Helper to format onboarding data
+export const formatOnboardingData = (
+  state: OnboardingState,
+): FormattedOnboardingData => ({
+  health_concerns: state.prioritizedConcerns.map((concern, index) => ({
+    ...concern,
+    priority: index + 1,
+  })),
+  diets: state.selectedDiets,
+  is_daily_exposure: state.isDailyExposure,
+  is_smoke: state.isSmoke,
+  alcohol: state.alcohol,
+  allergies: state.allergies,
+  custom_allergies: state.customAllergies,
+  timestamp: new Date().toISOString(),
+})
+
+// Async thunk for saving onboarding data
+export const saveOnboardingData = createAsyncThunk(
+  'onboarding/saveData',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { onboarding } = getState() as { onboarding: OnboardingState }
+      const dataToSave = formatOnboardingData(onboarding)
+
+      await AsyncStorage.setItem(
+        STORAGE_KEYS.ONBOARDING_DATA,
+        JSON.stringify(dataToSave),
+      )
+
+      console.log('=== ONBOARDING DATA ===')
+      console.log(JSON.stringify(dataToSave, null, 2))
+      console.log('=====================')
+
+      return dataToSave
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'Unknown error occurred'
+      console.error('Error saving onboarding data:', errorMessage)
+      return rejectWithValue(errorMessage)
+    }
+  },
+)
 
 const initialState: OnboardingState = {
   currentStep: 0,
@@ -26,14 +77,10 @@ const onboardingSlice = createSlice({
       state.currentStep = action.payload
     },
     nextStep: (state) => {
-      if (state.currentStep < state.totalSteps - 1) {
-        state.currentStep += 1
-      }
+      if (state.currentStep < state.totalSteps) state.currentStep += 1
     },
     prevStep: (state) => {
-      if (state.currentStep > 0) {
-        state.currentStep -= 1
-      }
+      if (state.currentStep > 0) state.currentStep -= 1
     },
     setHealthConcerns: (state, action: PayloadAction<HealthConcern[]>) => {
       state.healthConcerns = action.payload
@@ -69,6 +116,22 @@ const onboardingSlice = createSlice({
       state.isCompleted = action.payload
     },
     resetOnboarding: () => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(saveOnboardingData.pending, (state) => {
+        state.isLoading = true
+        state.error = null
+      })
+      .addCase(saveOnboardingData.fulfilled, (state) => {
+        state.isLoading = false
+        state.isCompleted = true
+        state.error = null
+      })
+      .addCase(saveOnboardingData.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload as string
+      })
   },
 })
 

@@ -1,44 +1,28 @@
-import { COLORS, DIMENSIONS, FONT_SIZES, shadows } from '@/src/constants'
 import { memo } from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
+import LottieView from 'lottie-react-native'
 
-const Character = memo(() => (
-  <>
-    <View style={characterStyles.characterWrapper}>
-      <Text style={characterStyles.characterEmoji}>{'👩‍⚕️'}</Text>
-      <View style={characterStyles.speechBubble}>
-        <Text style={characterStyles.speechText}>💬</Text>
-      </View>
-    </View>
-    <View style={characterStyles.characterWrapper}>
-      <Text style={characterStyles.characterEmoji}>{'👨‍⚕️'}</Text>
-      <View style={characterStyles.speechBubble}>
-        <Text style={characterStyles.speechText}>💬</Text>
-      </View>
-    </View>
-  </>
-))
+const { width: WIDTH } = Dimensions.get('window')
 
-const characterStyles = StyleSheet.create({
-  characterWrapper: {
-    alignItems: 'center',
-    position: 'relative',
-  },
-  characterEmoji: {
-    fontSize: DIMENSIONS.CHARACTER_EMOJI_SIZE,
-  },
-  speechBubble: {
-    position: 'absolute',
-    top: -10,
-    right: -10,
-    backgroundColor: COLORS.WHITE,
-    borderRadius: DIMENSIONS.BORDER_RADIUS_LARGE,
-    padding: DIMENSIONS.SPACING_SM,
-    ...shadows.small,
-  },
-  speechText: {
-    fontSize: FONT_SIZES.SMALL,
+const Character = () => {
+  return (
+    <LottieView
+      source={require('../../assets/lotties/welcome-logo.json')}
+      style={styles.container}
+      autoPlay
+      loop
+      hardwareAccelerationAndroid
+      enableMergePathsAndroidForKitKatAndAbove
+    />
+  )
+}
+
+export default memo(Character)
+
+const styles = StyleSheet.create({
+  container: {
+    width: WIDTH * 0.8,
+    height: WIDTH * 0.8,
+    alignSelf: 'center',
   },
 })
-
-export default Character
