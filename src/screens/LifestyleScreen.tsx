@@ -8,7 +8,6 @@ import {
   setDailyExposure,
   setSmoke,
   setAlcohol,
-  prevStep,
   saveOnboardingData,
 } from '../store/slices/onboardingSlice'
 import { BaseNavigationProps } from '../types'
@@ -108,8 +107,6 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
       style={commonStyles.safeAreaContainer}
       edges={['top', 'left', 'right']}
     >
-      <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
-
       <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
         {questions.map((q) => (
           <View style={styles.questionContainer} key={q.key}>
@@ -139,6 +136,7 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
             style={commonStyles.singleButtonContainer}
           />
         </View>
+        <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
       </View>
     </SafeAreaView>
   )
