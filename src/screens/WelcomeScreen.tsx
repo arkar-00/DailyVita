@@ -43,7 +43,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
 
         <View style={welcomeStyles.illustrationSection}>
           <View style={welcomeStyles.illustrationBox}>
-            <Pill style={welcomeStyles.pillBlue} emoji="💊" />
+            <Pill style={welcomeStyles.pillBlue} emoji="🎗️" />
             <Pill style={welcomeStyles.pillPurple} emoji="🧬" />
             <Pill style={welcomeStyles.pillOrange} emoji="💊" />
             <Pill style={welcomeStyles.pillGreen} emoji="🧪" />

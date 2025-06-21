@@ -103,11 +103,6 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
     dispatch(saveOnboardingData())
   }, [dispatch, state])
 
-  const handleBack = useCallback(() => {
-    dispatch(prevStep())
-    navigation.goBack()
-  }, [dispatch, navigation])
-
   return (
     <SafeAreaView
       style={commonStyles.safeAreaContainer}

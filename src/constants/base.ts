@@ -25,7 +25,7 @@ export const COLORS = {
   PRIMARY_LIGHT: '#FFE5E5',
 
   // Secondary colors
-  SECONDARY: '#2E5D32',
+  SECONDARY: '#2F435D',
   SECONDARY_LIGHT: '#C8E6C9',
 
   // Success colors
