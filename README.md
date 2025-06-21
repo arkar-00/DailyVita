@@ -2,9 +2,9 @@
 
 A modern React Native (TypeScript) app that guides users through a personalized vitamin recommendation onboarding process.
 
-![React Native](https://img.shields.io/badge/React%20Native-0.73-blue.svg)
+![React Native](https://img.shields.io/badge/React%20Native-0.79.4-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)
-![Expo](https://img.shields.io/badge/Expo-SDK%2050-blue.svg)
+![Expo](https://img.shields.io/badge/Expo-SDK%2053-blue.svg)
 
 ## 📱 Features
 
@@ -42,8 +42,8 @@ A modern React Native (TypeScript) app that guides users through a personalized 
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/dailyvita.git
-cd dailyvita
+git clone https://github.com/yourusername/DailyVita.git
+cd DailyVita
 npm install # or yarn install
 ```
 
@@ -71,17 +71,17 @@ npm run web      # Web browser
 
 ```json
 {
-    "health_concerns": [
-        { "id": 1, "name": "Sleep", "priority": 1 },
-        { "id": 2, "name": "Immunity", "priority": 2 }
-    ],
-    "diets": [{ "id": 1, "name": "Vegan", "tool_tip": "Description..." }],
-    "is_daily_exposure": true,
-    "is_smoke": false,
-    "alcohol": "0-1",
-    "allergies": [{ "id": 1, "name": "Milk" }],
-    "custom_allergies": "Custom allergy text",
-    "timestamp": "2024-01-01T00:00:00.000Z"
+  "health_concerns": [
+    { "id": 1, "name": "Sleep", "priority": 1 },
+    { "id": 2, "name": "Immunity", "priority": 2 }
+  ],
+  "diets": [{ "id": 1, "name": "Vegan", "tool_tip": "Description..." }],
+  "is_daily_exposure": true,
+  "is_smoke": false,
+  "alcohol": "0-1",
+  "allergies": [{ "id": 1, "name": "Milk" }],
+  "custom_allergies": "Custom allergy text",
+  "timestamp": "2024-01-01T00:00:00.000Z"
 }
 ```
 

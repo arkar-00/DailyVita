@@ -9,7 +9,9 @@
     "web": "expo start --web",
     "build": "expo export",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "tsc --noEmit && eslint --fix \"**/*.{js,ts,tsx}\" && prettier --write \"**/*.{js,ts,tsx}\""
+    "lint:fix": "tsc --noEmit && eslint --fix \"**/*.{js,ts,tsx}\" && prettier --write \"**/*.{js,ts,tsx}\"",
+    "test": "jest",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\""
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.2",
