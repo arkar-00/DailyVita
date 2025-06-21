@@ -7,7 +7,12 @@ import {
 
 import { SCREEN_NAMES } from '../constants'
 import { RootStackParamList } from '../types'
-import { DietsScreen, HealthConcernsScreen, WelcomeScreen } from '../screens'
+import {
+  AllergiesScreen,
+  DietsScreen,
+  HealthConcernsScreen,
+  WelcomeScreen,
+} from '../screens'
 
 export type RootStackNavigationProp = StackNavigationProp<RootStackParamList>
 
@@ -28,6 +33,10 @@ const AppNavigator: React.FC = () => {
           component={HealthConcernsScreen}
         />
         <Stack.Screen name={SCREEN_NAMES.DIETS} component={DietsScreen} />
+        <Stack.Screen
+          name={SCREEN_NAMES.ALLERGIES}
+          component={AllergiesScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

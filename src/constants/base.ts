@@ -3,6 +3,7 @@ export const SCREEN_NAMES = {
   WELCOME: 'Welcome',
   HEALTH_CONCERNS: 'HealthConcerns',
   DIETS: 'Diets',
+  ALLERGIES: 'Allergies',
 } as const
 
 // Storage keys
