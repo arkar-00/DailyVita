@@ -47,15 +47,6 @@ cd DailyVita
 npm install # or yarn install
 ```
 
-### Running the App
-
-```bash
-npm start        # or yarn start
-npm run ios      # iOS simulator
-npm run android  # Android emulator
-npm run web      # Web browser
-```
-
 ## 🎯 Usage
 
 ### Onboarding Steps
