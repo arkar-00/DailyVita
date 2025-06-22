@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-} from 'react-native'
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native'
 import { COLORS, DIMENSIONS, FONT_SIZES, FONT_WEIGHTS } from '@/src/constants'
 
 export interface ConcernItemProps {
@@ -26,20 +20,12 @@ export const ConcernItem: React.FC<ConcernItemProps> = ({
   textStyle,
 }) => (
   <TouchableOpacity
-    style={[
-      concernStyles.concernItem,
-      selected && concernStyles.concernItemSelected,
-      style,
-    ]}
+    style={[concernStyles.concernItem, selected && concernStyles.concernItemSelected, style]}
     onPress={onPress}
     testID={testID}
   >
     <Text
-      style={[
-        concernStyles.concernText,
-        selected && concernStyles.concernTextSelected,
-        textStyle,
-      ]}
+      style={[concernStyles.concernText, selected && concernStyles.concernTextSelected, textStyle]}
     >
       {name}
     </Text>

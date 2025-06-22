@@ -5,13 +5,7 @@ import { useDispatch } from 'react-redux'
 import { setCurrentStep } from '../store/slices/onboardingSlice'
 import { BaseNavigationProps } from '../types'
 import { AppDispatch } from '../store'
-import {
-  COLORS,
-  DIMENSIONS,
-  commonStyles,
-  textStyles,
-  SCREEN_NAMES,
-} from '../constants'
+import { COLORS, DIMENSIONS, commonStyles, textStyles, SCREEN_NAMES } from '../constants'
 import { CustomButton } from '../components'
 import Character from './components/Character'
 import Pill from './components/Pill'
@@ -29,10 +23,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
   }, [dispatch, navigation])
 
   return (
-    <SafeAreaView
-      style={commonStyles.safeAreaContainer}
-      edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView style={commonStyles.safeAreaContainer} edges={['top', 'left', 'right']}>
       <View style={commonStyles.contentContainer}>
         <View style={commonStyles.header}>
           <Text style={textStyles.title}>Welcome to DailyVita</Text>
@@ -55,8 +46,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
 
         <View style={commonStyles.footer}>
           <Text style={textStyles.description}>
-            We will ask couple of questions to better{'\n'}understand your
-            vitamin need.
+            We will ask couple of questions to better{'\n'}understand your vitamin need.
           </Text>
           <CustomButton
             title="Get started"

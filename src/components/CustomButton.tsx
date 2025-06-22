@@ -1,24 +1,9 @@
 import React, { useMemo } from 'react'
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  ViewStyle,
-  TextStyle,
-} from 'react-native'
+import { TouchableOpacity, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native'
 import { ButtonProps, ButtonVariant } from '../types'
-import {
-  COLORS,
-  DIMENSIONS,
-  FONT_SIZES,
-  FONT_WEIGHTS,
-  ANIMATION,
-} from '../constants'
+import { COLORS, DIMENSIONS, FONT_SIZES, FONT_WEIGHTS, ANIMATION } from '../constants'
 
-const getButtonStyle = (
-  variant: ButtonVariant,
-  disabled: boolean,
-): ViewStyle => {
+const getButtonStyle = (variant: ButtonVariant, disabled: boolean): ViewStyle => {
   if (disabled) {
     return {
       backgroundColor: COLORS.GRAY_MEDIUM,
@@ -50,14 +35,8 @@ const CustomButton: React.FC<ButtonProps> = ({
   style,
   textStyle,
 }) => {
-  const buttonStyle = useMemo(
-    () => getButtonStyle(variant, disabled),
-    [variant, disabled],
-  )
-  const labelStyle = useMemo(
-    () => getTextStyle(variant, disabled),
-    [variant, disabled],
-  )
+  const buttonStyle = useMemo(() => getButtonStyle(variant, disabled), [variant, disabled])
+  const labelStyle = useMemo(() => getTextStyle(variant, disabled), [variant, disabled])
 
   return (
     <TouchableOpacity

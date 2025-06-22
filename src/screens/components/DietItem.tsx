@@ -1,10 +1,4 @@
-import {
-  COLORS,
-  DIMENSIONS,
-  FONT_SIZES,
-  FONT_WEIGHTS,
-  shadows,
-} from '@/src/constants'
+import { COLORS, DIMENSIONS, FONT_SIZES, FONT_WEIGHTS, shadows } from '@/src/constants'
 import { Diet } from '@/src/types'
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
@@ -18,13 +12,7 @@ type DietItemProps = {
 }
 
 const DietItem = React.memo(
-  ({
-    diet,
-    selected,
-    onToggle,
-    onInfoPress,
-    isTooltipVisible,
-  }: DietItemProps) => (
+  ({ diet, selected, onToggle, onInfoPress, isTooltipVisible }: DietItemProps) => (
     <View style={styles.wrapper}>
       <View style={styles.row}>
         <TouchableOpacity
@@ -38,9 +26,7 @@ const DietItem = React.memo(
           <View style={styles.content}>
             <View style={styles.header}>
               <View style={styles.nameContainer}>
-                <Text
-                  style={[styles.nameText, selected && styles.nameTextSelected]}
-                >
+                <Text style={[styles.nameText, selected && styles.nameTextSelected]}>
                   {diet.name}
                 </Text>
                 <TouchableOpacity

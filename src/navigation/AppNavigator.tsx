@@ -1,9 +1,6 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import {
-  createStackNavigator,
-  StackNavigationProp,
-} from '@react-navigation/stack'
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
 
 import { SCREEN_NAMES } from '../constants'
 import { RootStackParamList } from '../types'
@@ -29,19 +26,10 @@ const AppNavigator: React.FC = () => {
         }}
       >
         <Stack.Screen name={SCREEN_NAMES.WELCOME} component={WelcomeScreen} />
-        <Stack.Screen
-          name={SCREEN_NAMES.HEALTH_CONCERNS}
-          component={HealthConcernsScreen}
-        />
+        <Stack.Screen name={SCREEN_NAMES.HEALTH_CONCERNS} component={HealthConcernsScreen} />
         <Stack.Screen name={SCREEN_NAMES.DIETS} component={DietsScreen} />
-        <Stack.Screen
-          name={SCREEN_NAMES.ALLERGIES}
-          component={AllergiesScreen}
-        />
-        <Stack.Screen
-          name={SCREEN_NAMES.LIFESTYLE}
-          component={LifestyleScreen}
-        />
+        <Stack.Screen name={SCREEN_NAMES.ALLERGIES} component={AllergiesScreen} />
+        <Stack.Screen name={SCREEN_NAMES.LIFESTYLE} component={LifestyleScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

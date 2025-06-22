@@ -30,8 +30,7 @@ const questions = [
     key: 'sunExposure',
     title: (
       <>
-        Is your daily exposure to sun limited?{' '}
-        <Text style={textStyles.asterisk}>*</Text>
+        Is your daily exposure to sun limited? <Text style={textStyles.asterisk}>*</Text>
       </>
     ),
     options: [
@@ -43,8 +42,7 @@ const questions = [
     key: 'smoking',
     title: (
       <>
-        Do you currently smoke (tobacco or marijuana)?{' '}
-        <Text style={textStyles.asterisk}>*</Text>
+        Do you currently smoke (tobacco or marijuana)? <Text style={textStyles.asterisk}>*</Text>
       </>
     ),
     options: [
@@ -70,8 +68,9 @@ const questions = [
 
 const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const { currentStep, totalSteps, isDailyExposure, isSmoke, alcohol } =
-    useSelector((state: RootState) => state.onboarding)
+  const { currentStep, totalSteps, isDailyExposure, isSmoke, alcohol } = useSelector(
+    (state: RootState) => state.onboarding,
+  )
 
   const [state, setState] = React.useState({
     sunExposure: isDailyExposure,
@@ -85,15 +84,8 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
 
   const handleNext = useCallback(() => {
     const { sunExposure, smoking, alcoholConsumption } = state
-    if (
-      sunExposure === null ||
-      smoking === null ||
-      alcoholConsumption === null
-    ) {
-      Alert.alert(
-        'Complete Required Fields',
-        'Please answer all questions before proceeding.',
-      )
+    if (sunExposure === null || smoking === null || alcoholConsumption === null) {
+      Alert.alert('Complete Required Fields', 'Please answer all questions before proceeding.')
       return
     }
     dispatch(setDailyExposure(sunExposure))
@@ -103,10 +95,7 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
   }, [dispatch, state])
 
   return (
-    <SafeAreaView
-      style={commonStyles.safeAreaContainer}
-      edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView style={commonStyles.safeAreaContainer} edges={['top', 'left', 'right']}>
       <ScrollView style={styles.content} keyboardShouldPersistTaps="handled">
         {questions.map((q) => (
           <View style={styles.questionContainer} key={q.key}>
@@ -116,9 +105,7 @@ const LifestyleScreen: React.FC<LifestyleScreenProps> = ({ navigation }) => {
                 <RadioButton
                   key={String(opt.value)}
                   selected={state[q.key as keyof typeof state]}
-                  onPress={() =>
-                    setField(q.key as keyof typeof state, opt.value)
-                  }
+                  onPress={() => setField(q.key as keyof typeof state, opt.value)}
                   label={opt.label}
                   value={opt.value}
                 />

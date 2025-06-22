@@ -1,18 +1,8 @@
 import React, { useCallback, useMemo } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  setSelectedDiets,
-  nextStep,
-  prevStep,
-} from '../store/slices/onboardingSlice'
+import { setSelectedDiets, nextStep, prevStep } from '../store/slices/onboardingSlice'
 import { RootState, AppDispatch } from '../store'
 import { BaseNavigationProps, Diet } from '../types'
 import {
@@ -35,8 +25,7 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
   const { currentStep, totalSteps, selectedDiets } = useSelector(
     (state: RootState) => state.onboarding,
   )
-  const [localSelectedDiets, setLocalSelectedDiets] =
-    React.useState<Diet[]>(selectedDiets)
+  const [localSelectedDiets, setLocalSelectedDiets] = React.useState<Diet[]>(selectedDiets)
   const [showTooltip, setShowTooltip] = React.useState<number | null>(null)
 
   const isNoneSelected = localSelectedDiets.length === 0
@@ -91,10 +80,7 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
   }, [localSelectedDiets, showTooltip, handleDietToggle, handleInfoPress])
 
   return (
-    <SafeAreaView
-      style={commonStyles.safeAreaContainer}
-      edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView style={commonStyles.safeAreaContainer} edges={['top', 'left', 'right']}>
       <ScrollView
         style={commonStyles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -102,36 +88,22 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
       >
         <View style={styles.dietsHeader}>
           <Text style={textStyles.title}>
-            Select the diets you follow.{' '}
-            <Text style={textStyles.asterisk}>*</Text>
+            Select the diets you follow. <Text style={textStyles.asterisk}>*</Text>
           </Text>
         </View>
 
         <View style={styles.dietsListContainer}>
           <TouchableOpacity
-            style={[
-              styles.dietOption,
-              isNoneSelected && styles.dietOptionSelected,
-            ]}
+            style={[styles.dietOption, isNoneSelected && styles.dietOptionSelected]}
             onPress={() => handleDietToggle({ name: 'None' })}
             testID="diet-none"
             activeOpacity={0.7}
           >
-            <View
-              style={[
-                styles.dietCheckbox,
-                isNoneSelected && styles.dietCheckboxSelected,
-              ]}
-            >
+            <View style={[styles.dietCheckbox, isNoneSelected && styles.dietCheckboxSelected]}>
               {isNoneSelected && <Text style={styles.dietCheckmark}>✓</Text>}
             </View>
             <View style={styles.dietLabelContainer}>
-              <Text
-                style={[
-                  styles.dietLabel,
-                  isNoneSelected && styles.dietLabelSelected,
-                ]}
-              >
+              <Text style={[styles.dietLabel, isNoneSelected && styles.dietLabelSelected]}>
                 None
               </Text>
             </View>
@@ -148,11 +120,7 @@ const DietsScreen: React.FC<DietsScreenProps> = ({ navigation }) => {
             variant="secondary"
             style={styles.dietsBackButton}
           />
-          <CustomButton
-            title="Next"
-            onPress={handleNext}
-            style={styles.dietsNextButton}
-          />
+          <CustomButton title="Next" onPress={handleNext} style={styles.dietsNextButton} />
         </View>
         <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
       </View>

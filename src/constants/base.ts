@@ -139,5 +139,4 @@ export const ALCOHOL_OPTIONS = {
   HIGH: '5+',
 } as const
 
-export type AlcoholOption =
-  (typeof ALCOHOL_OPTIONS)[keyof typeof ALCOHOL_OPTIONS]
+export type AlcoholOption = (typeof ALCOHOL_OPTIONS)[keyof typeof ALCOHOL_OPTIONS]

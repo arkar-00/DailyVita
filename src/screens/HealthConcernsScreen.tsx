@@ -2,9 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
-import DraggableFlatList, {
-  RenderItemParams,
-} from 'react-native-draggable-flatlist'
+import DraggableFlatList, { RenderItemParams } from 'react-native-draggable-flatlist'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import {
   setHealthConcerns,
@@ -14,14 +12,7 @@ import {
 } from '../store/slices/onboardingSlice'
 import { BaseNavigationProps, HealthConcern } from '../types'
 import { RootState, AppDispatch } from '../store'
-import {
-  COLORS,
-  DIMENSIONS,
-  SCREEN_NAMES,
-  ANIMATION,
-  LIMITS,
-  MESSAGES,
-} from '../constants'
+import { COLORS, DIMENSIONS, SCREEN_NAMES, ANIMATION, LIMITS, MESSAGES } from '../constants'
 import { commonStyles, textStyles } from '../constants'
 import healthConcernsData from '../data/healthconcerns.json'
 import { CustomButton, ProgressBar } from '../components'
@@ -30,9 +21,7 @@ import { PriorityItem } from './components/PriorityItem'
 
 type HealthConcernsScreenProps = BaseNavigationProps<'HealthConcerns'>
 
-const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
-  navigation,
-}) => {
+const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({ navigation }) => {
   const dispatch = useDispatch<AppDispatch>()
   const { currentStep, totalSteps, healthConcerns } = useSelector(
     (state: RootState) => ({
@@ -43,10 +32,8 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
     shallowEqual,
   )
 
-  const [selectedConcerns, setSelectedConcerns] =
-    React.useState<HealthConcern[]>(healthConcerns)
-  const [prioritizedData, setPrioritizedData] =
-    React.useState<HealthConcern[]>(healthConcerns)
+  const [selectedConcerns, setSelectedConcerns] = React.useState<HealthConcern[]>(healthConcerns)
+  const [prioritizedData, setPrioritizedData] = React.useState<HealthConcern[]>(healthConcerns)
 
   React.useEffect(() => {
     setPrioritizedData(selectedConcerns)
@@ -59,10 +46,7 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
         return prev.filter((item) => item.id !== concern.id)
       }
       if (prev.length >= LIMITS.MAX_HEALTH_CONCERNS) {
-        Alert.alert(
-          MESSAGES.MAX_SELECTION,
-          MESSAGES.MAX_HEALTH_CONCERNS_MESSAGE,
-        )
+        Alert.alert(MESSAGES.MAX_SELECTION, MESSAGES.MAX_HEALTH_CONCERNS_MESSAGE)
         return prev
       }
       return [...prev, concern]
@@ -78,10 +62,7 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
 
   const handleNext = useCallback(() => {
     if (selectedConcerns.length === 0) {
-      Alert.alert(
-        MESSAGES.SELECTION_REQUIRED,
-        MESSAGES.MIN_HEALTH_CONCERNS_MESSAGE,
-      )
+      Alert.alert(MESSAGES.SELECTION_REQUIRED, MESSAGES.MIN_HEALTH_CONCERNS_MESSAGE)
       return
     }
     dispatch(setHealthConcerns(selectedConcerns))
@@ -98,9 +79,7 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
   const concernsGrid = useMemo(
     () =>
       healthConcernsData.data.map((concern: HealthConcern) => {
-        const isSelected = selectedConcerns.some(
-          (item) => item.id === concern.id,
-        )
+        const isSelected = selectedConcerns.some((item) => item.id === concern.id)
         return (
           <ConcernItem
             key={concern.id}
@@ -115,10 +94,7 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
   )
 
   return (
-    <SafeAreaView
-      style={commonStyles.safeAreaContainer}
-      edges={['top', 'left', 'right']}
-    >
+    <SafeAreaView style={commonStyles.safeAreaContainer} edges={['top', 'left', 'right']}>
       <ScrollView
         style={commonStyles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -127,12 +103,9 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
         {/* Health Concerns Selection Section */}
         <View style={styles.sectionHeader}>
           <Text style={textStyles.title}>
-            Select the top health concerns.{' '}
-            <Text style={textStyles.asterisk}>*</Text>
+            Select the top health concerns. <Text style={textStyles.asterisk}>*</Text>
           </Text>
-          <Text style={textStyles.title}>
-            (up to {LIMITS.MAX_HEALTH_CONCERNS})
-          </Text>
+          <Text style={textStyles.title}>(up to {LIMITS.MAX_HEALTH_CONCERNS})</Text>
         </View>
 
         <View style={styles.concernsGridContainer}>{concernsGrid}</View>
@@ -170,11 +143,7 @@ const HealthConcernsScreen: React.FC<HealthConcernsScreenProps> = ({
               variant="secondary"
               style={styles.backButton}
             />
-            <CustomButton
-              title="Next"
-              onPress={handleNext}
-              style={styles.nextButton}
-            />
+            <CustomButton title="Next" onPress={handleNext} style={styles.nextButton} />
           </View>
         </View>
         <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />

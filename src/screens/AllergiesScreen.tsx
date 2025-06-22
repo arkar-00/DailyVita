@@ -1,12 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react'
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useDispatch, useSelector } from 'react-redux'
 import CustomButton from '../components/CustomButton'
@@ -39,8 +32,7 @@ const AllergiesScreen: React.FC<AllergiesScreenProps> = ({ navigation }) => {
     (state: RootState) => state.onboarding,
   )
 
-  const [selectedAllergies, setSelectedAllergies] =
-    useState<Allergy[]>(allergies)
+  const [selectedAllergies, setSelectedAllergies] = useState<Allergy[]>(allergies)
   const [inputText, setInputText] = useState('')
   const [showSuggestions, setShowSuggestions] = useState(false)
 
@@ -78,9 +70,7 @@ const AllergiesScreen: React.FC<AllergiesScreenProps> = ({ navigation }) => {
   }, [])
 
   const handleAllergyRemove = useCallback((allergyId: string | number) => {
-    setSelectedAllergies((prev) =>
-      prev.filter((allergy) => allergy.id !== allergyId),
-    )
+    setSelectedAllergies((prev) => prev.filter((allergy) => allergy.id !== allergyId))
   }, [])
 
   const handleInputChange = useCallback((text: string) => {
@@ -123,18 +113,11 @@ const AllergiesScreen: React.FC<AllergiesScreenProps> = ({ navigation }) => {
   }, [dispatch, navigation])
 
   return (
-    <SafeAreaView
-      style={commonStyles.safeAreaContainer}
-      edges={['top', 'left', 'right']}
-    >
-      <ScrollView
-        style={commonStyles.scrollContent}
-        keyboardShouldPersistTaps="handled"
-      >
+    <SafeAreaView style={commonStyles.safeAreaContainer} edges={['top', 'left', 'right']}>
+      <ScrollView style={commonStyles.scrollContent} keyboardShouldPersistTaps="handled">
         <View style={styles.sectionHeader}>
           <Text style={textStyles.title}>
-            Write any specific allergies or sensitivity towards specific
-            things.(optional)
+            Write any specific allergies or sensitivity towards specific things.(optional)
           </Text>
         </View>
 
@@ -206,11 +189,7 @@ const AllergiesScreen: React.FC<AllergiesScreenProps> = ({ navigation }) => {
             variant="secondary"
             style={styles.footerBackButton}
           />
-          <CustomButton
-            title="Next"
-            onPress={handleSubmit}
-            style={styles.footerNextButton}
-          />
+          <CustomButton title="Next" onPress={handleSubmit} style={styles.footerNextButton} />
         </View>
         <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
       </View>

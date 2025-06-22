@@ -9,11 +9,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaProvider>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor="#C8E6C9"
-          translucent={false}
-        />
+        <StatusBar barStyle="dark-content" backgroundColor="#C8E6C9" translucent={false} />
         <AppNavigator />
       </SafeAreaProvider>
     </Provider>

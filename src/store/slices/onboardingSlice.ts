@@ -1,18 +1,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import {
-  HealthConcern,
-  Diet,
-  Allergy,
-  OnboardingState,
-  FormattedOnboardingData,
-} from '../../types'
+import { HealthConcern, Diet, Allergy, OnboardingState, FormattedOnboardingData } from '../../types'
 import { AlcoholOption, STORAGE_KEYS } from '../../constants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 // Helper to format onboarding data
-export const formatOnboardingData = (
-  state: OnboardingState,
-): FormattedOnboardingData => ({
+export const formatOnboardingData = (state: OnboardingState): FormattedOnboardingData => ({
   health_concerns: state.prioritizedConcerns.map((concern, index) => ({
     ...concern,
     priority: index + 1,
@@ -34,19 +26,15 @@ export const saveOnboardingData = createAsyncThunk(
       const { onboarding } = getState() as { onboarding: OnboardingState }
       const dataToSave = formatOnboardingData(onboarding)
 
-      await AsyncStorage.setItem(
-        STORAGE_KEYS.ONBOARDING_DATA,
-        JSON.stringify(dataToSave),
-      )
+      await AsyncStorage.setItem(STORAGE_KEYS.ONBOARDING_DATA, JSON.stringify(dataToSave))
 
       console.log('=== ONBOARDING DATA ===')
       console.log(JSON.stringify(dataToSave, null, 2))
-      console.log('=====================')
+      console.log('==========================================')
 
       return dataToSave
     } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Unknown error occurred'
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred'
       console.error('Error saving onboarding data:', errorMessage)
       return rejectWithValue(errorMessage)
     }

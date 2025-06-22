@@ -7,14 +7,7 @@ import {
   GestureResponderEvent,
   ViewStyle,
 } from 'react-native'
-import {
-  COLORS,
-  DIMENSIONS,
-  FONT_SIZES,
-  FONT_WEIGHTS,
-  shadows,
-  ANIMATION,
-} from '@/src/constants'
+import { COLORS, DIMENSIONS, FONT_SIZES, FONT_WEIGHTS, shadows, ANIMATION } from '@/src/constants'
 
 type PriorityItemProps = {
   name: string
@@ -32,11 +25,7 @@ export const PriorityItem: React.FC<PriorityItemProps> = ({
   testID,
 }) => (
   <TouchableOpacity
-    style={[
-      priorityStyles.priorityItem,
-      isActive && priorityStyles.priorityItemActive,
-      style,
-    ]}
+    style={[priorityStyles.priorityItem, isActive && priorityStyles.priorityItemActive, style]}
     onLongPress={onLongPress}
     delayLongPress={ANIMATION.LONG_PRESS_DELAY}
     activeOpacity={ANIMATION.ACTIVE_OPACITY}

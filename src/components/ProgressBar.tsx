@@ -3,10 +3,7 @@ import { View, StyleSheet } from 'react-native'
 import { ProgressBarProps } from '../types'
 import { COLORS, DIMENSIONS } from '../constants'
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
-  currentStep,
-  totalSteps,
-}) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) => {
   const progress = useMemo(() => {
     if (totalSteps <= 0) return '0%'
     const value = Math.min(Math.max(currentStep, 0), totalSteps)
@@ -16,10 +13,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.progressBar}>
-        <View
-          style={[styles.progress, { width: progress } as Object]}
-          testID="progress-bar-fill"
-        />
+        <View style={[styles.progress, { width: progress } as Object]} testID="progress-bar-fill" />
       </View>
     </View>
   )
