@@ -4,7 +4,7 @@ import { FormattedOnboardingData, RootState } from '../../types'
 import { STORAGE_KEYS, REDUX_ACTIONS } from '../../constants'
 import { formatOnboardingData, setCompleted, setError, setLoading } from '../slices/onboardingSlice'
 
-function* loadOnboardingDataSaga(): Generator {
+export function* loadOnboardingDataSaga(): Generator {
   try {
     const data: string | null = yield call(AsyncStorage.getItem, STORAGE_KEYS.ONBOARDING_DATA)
     if (data) {
@@ -17,7 +17,7 @@ function* loadOnboardingDataSaga(): Generator {
   }
 }
 
-function* saveOnboardingDataSaga(): Generator {
+export function* saveOnboardingDataSaga(): Generator {
   try {
     yield put(setLoading(true))
     const state: RootState = yield select()
