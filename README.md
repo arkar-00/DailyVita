@@ -89,7 +89,7 @@ npm run web        # Web browser
 npm run lint       # ESLint
 npm run lint:fix   # Fix ESLint issues
 npm run format     # Prettier
-npm run type-check # TypeScript check
+npm run test       # Test
 
 # Build
 npm run build      # Production build
